@@ -62,7 +62,12 @@
     function removeTransition(e) {
       if (e.propertyName !== 'transform') return;
       this.classList.remove('playing')
-
+    }
+    // this will cause 'this' to be the window becasue of how arrow functions work
+    // hoisting and enclosure
+    const badRemoveTransition = (e) => {
+      if (e.propertyName !== 'transform') return;
+      this.classList.remove('playing')
     }
     function playTheSound(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
